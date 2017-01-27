@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Bhrome",
+  "description": "Makes sure everythings boolin while you browse with bhrome",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html"
+  },
+  "permissions": [
+   "activeTab"
+   ]
+}
