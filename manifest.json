@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Bhrome",
-  "description": "Makes sure everythings boolin while you browse with bhrome",
-  "version": "1.0",
+  "name": "🅱️️hrome",
+  "description": "Makes sure everythings 🅱️️oolin while you 🅱️️rowse with 🅱️️hrome",
+  "version": "0.1",
 
   "browser_action": {
    "default_icon": "icon.png",
@@ -11,5 +11,13 @@
   },
   "permissions": [
    "activeTab"
-   ]
+   ],
+  "content_scripts": [
+  {
+    "matches": [
+      "<all_urls>"
+    ],
+    "js": ["content.js"]
+  }
+]
 }
