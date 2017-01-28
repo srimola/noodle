@@ -19,14 +19,20 @@ function handleText(textNode) {
   textNode.nodeValue = replaceText(textNode.nodeValue);
 }
 
-function replaceText(v)
-{
-  console.log(word);
-    if (word.charAt(0) === 'C' || 'c' ) {
-        word = word.substr(1);
-        word = 🅱️️ + word;
-    }
-
+var text = document.body.innerHTML;
+function replaceText(text) {
+    if (text.charAt(0) == 'C' || 'c') {
+        var re = /(?:^|\W)C(\w+)(?!\w)/g, match;
+        while (match = re.exec(text)) {
+            var newMatch = match[0];
+            console.log(match[1]);
+            var newWord = ' 🅱️️' + match[1];
+            var newText = text.replace(newMatch, newWord);
+            console.log(newText);
+            return newText;
+        }
+    } 
+    return text;
 }
 
 // The callback used for the document body and title observers
@@ -60,9 +66,9 @@ function walkAndObserve(doc) {
     walk(doc.body);
     doc.title = replaceText(doc.title);
 
-    // Observe the body so that we replace text in any added/modified nodes
-    bodyObserver = new MutationObserver(observerCallback);
-    bodyObserver.observe(doc.body, observerConfig);
+    // // Observe the body so that we replace text in any added/modified nodes
+    // bodyObserver = new MutationObserver(observerCallback);
+    // bodyObserver.observe(doc.body, observerConfig);
 
     // Observe the title so we can handle any modifications there
     if (docTitle) {

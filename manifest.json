@@ -13,8 +13,7 @@
    "activeTab",
    "tabs"
    ],
-    "content_scripts":
-  [
+    "content_scripts": [
     {
       "matches": ["*://*/*"],
       "all_frames": true,
