@@ -21,10 +21,10 @@ function handleText(textNode) {
 
 function replaceText(v)
 {
-    if (v.charAt(0) === 'C' || 'c' ) {
-        v = v.substr(1);
-        v = 🅱️️ + v;
-        return v;
+  console.log(word);
+    if (word.charAt(0) === 'C' || 'c' ) {
+        word = word.substr(1);
+        word = 🅱️️ + word;
     }
 
 }
