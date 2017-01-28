@@ -21,6 +21,7 @@ function handleText(textNode) {
 
 function replaceText(word)
 {
+  console.log(word);
     if (word.charAt(0) === 'C' || 'c' ) {
         word = word.substr(1);
         word = 🅱️️ + word;
