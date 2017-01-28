@@ -19,14 +19,14 @@ function handleText(textNode) {
   textNode.nodeValue = replaceText(textNode.nodeValue);
 }
 
-function replaceText(word)
+function replaceText(v)
 {
-    if (word.charAt(0) === 'C' || 'c' ) {
-        word = word.substr(1);
-        word = 🅱️️ + word;
+    if (v.charAt(0) === 'C' || 'c' ) {
+        v = v.substr(1);
+        v = 🅱️️ + v;
+        return v;
     }
 
-    return word;
 }
 
 // The callback used for the document body and title observers

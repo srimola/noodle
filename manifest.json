@@ -10,14 +10,16 @@
    "default_popup": "popup.html"
   },
   "permissions": [
-   "activeTab"
+   "activeTab",
+   "tabs"
    ],
-  "content_scripts": [
-  {
-    "matches": [
-      "<all_urls>"
-    ],
-    "js": ["content.js"]
-  }
-]
+    "content_scripts":
+  [
+    {
+      "matches": ["*://*/*"],
+      "all_frames": true,
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
