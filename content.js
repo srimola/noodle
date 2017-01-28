@@ -21,7 +21,6 @@ function handleText(textNode) {
 
 var text = document.body.innerHTML;
 function replaceText(text) {
-    if (text.charAt(0) == 'C' || 'c') {
         var re = /(?:^|\W)C(\w+)(?!\w)/g, match;
         while (match = re.exec(text)) {
             var newMatch = match[0];
@@ -30,7 +29,15 @@ function replaceText(text) {
             var newText = text.replace(newMatch, newWord);
             console.log(newText);
             return newText;
-        }
+    } 
+    var re2 = /(?:^|\W)c(\w+)(?!\w)/g, match2;
+        while (match2 = re2.exec(text)) {
+            var newMatch2 = match2[0];
+            console.log(match2[1]);
+            var newWord2 = ' 🅱️️' + match2[1];
+            var newText2 = text.replace(newMatch2, newWord2);
+            console.log(newText2);
+            return newText2;
     } 
     return text;
 }
