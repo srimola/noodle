@@ -21,20 +21,29 @@ function handleText(textNode) {
 
 var text = document.body.innerHTML;
 function replaceText(text) {
-        var reCap = /(?:^|\W)C(\w+)(?!\w)/g, capMatch;
-        while (capMatch = reCap.exec(text)) {
+    //Regex for capital letters
+        var rECap = /(?:^|\W)C(\w+)(?!\w)/g, capMatch;
+        while (capMatch = rECap.exec(text)) {
+            //finds words with capital C 
             var newCapMatch = capMatch[0];
+            //takes word without C and adds B emoji
             var newCapBWord = ' 🅱️️' + capMatch[1];
+            //replaces each instance
             var capNewText = text.replace(newCapMatch, newCapBWord);
             return capNewText;
     } 
-        var reLow = /(?:^|\W)c(\w+)(?!\w)/g, lowerMatch;
-        while (lowerMatch = reLow.exec(text)) {
+        //Regex for lowercase letters
+        var rELow = /(?:^|\W)c(\w+)(?!\w)/g, lowerMatch;
+        while (lowerMatch = rELow.exec(text)) {
+            //finds words with lowercase C 
             var newLowerMatch = lowerMatch[0];
+            // takes word without C and adds B emoji
             var newLowerBWord = ' 🅱️️' + lowerMatch[1];
+            //replaces each instance
             var lowerNewText = text.replace(newLowerMatch, newLowerBWord);
             return lowerNewText;
     } 
+    //returns normal text
     return text;
 }
 
