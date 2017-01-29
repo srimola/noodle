@@ -21,23 +21,19 @@ function handleText(textNode) {
 
 var text = document.body.innerHTML;
 function replaceText(text) {
-        var re = /(?:^|\W)C(\w+)(?!\w)/g, match;
-        while (match = re.exec(text)) {
-            var newMatch = match[0];
-            console.log(match[1]);
-            var newWord = ' 🅱️️' + match[1];
-            var newText = text.replace(newMatch, newWord);
-            console.log(newText);
-            return newText;
+        var reCap = /(?:^|\W)C(\w+)(?!\w)/g, capMatch;
+        while (capMatch = reCap.exec(text)) {
+            var newCapMatch = capMatch[0];
+            var newCapBWord = ' 🅱️️' + capMatch[1];
+            var capNewText = text.replace(newCapMatch, newCapBWord);
+            return capNewText;
     } 
-    var re2 = /(?:^|\W)c(\w+)(?!\w)/g, match2;
-        while (match2 = re2.exec(text)) {
-            var newMatch2 = match2[0];
-            console.log(match2[1]);
-            var newWord2 = ' 🅱️️' + match2[1];
-            var newText2 = text.replace(newMatch2, newWord2);
-            console.log(newText2);
-            return newText2;
+        var reLow = /(?:^|\W)c(\w+)(?!\w)/g, lowerMatch;
+        while (lowerMatch = reLow.exec(text)) {
+            var newLowerMatch = lowerMatch[0];
+            var newLowerBWord = ' 🅱️️' + lowerMatch[1];
+            var lowerNewText = text.replace(newLowerMatch, newLowerBWord);
+            return lowerNewText;
     } 
     return text;
 }
