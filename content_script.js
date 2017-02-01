@@ -31,10 +31,10 @@ function replaceText(text) {
         //finds words with capital C
         var newRegexMatch = regexMatch[0];
         //takes word without C and adds B emoji
-        var newCapBWord = ' 🅱️️' + regexMatch[1];
+        regexMatch[1] = ''
+        var newCapBWord = ' 🅱️' + regexMatch[1];
         //replaces each instance
         var newText = text.replace(newRegexMatch, newCapBWord);
-
         text = newText;
     }
     return text;
