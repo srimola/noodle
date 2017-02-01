@@ -4,7 +4,6 @@
   "name": "🅱️️hrome",
   "description": "Making sure everythings 🅱️️ool while you 🅱️️rowse with 🅱️️hrome",
   "version": "0.1",
-
   "browser_action": {
    "default_icon": "icon.png",
    "default_popup": "popup.html"

@@ -1,5 +1,4 @@
-function walk(rootNode)
-{
+function walk(rootNode) {
     // Find all the text nodes in rootNode
     var walker = document.createTreeWalker(
         rootNode,
@@ -11,56 +10,33 @@ function walk(rootNode)
 
     // Modify each text node's value
     while (node = walker.nextNode()) {
+      // Only handle text nodes
+      if (node.nodeType === 3) {
         handleText(node);
+      }
     }
 }
 
 function handleText(textNode) {
-  textNode.nodeValue = replaceText(textNode.nodeValue);
+  if (!textNode.textContent.match(/\.c/)) {
+    textNode.textContent = replaceText(textNode.textContent);
+  }
 }
 
-var text = document.body.innerHTML;
 function replaceText(text) {
     //Regex for capital and lowercase letters
-    var rECap = /(?:^|\W)C(\w+)(?!\w)/g, capMatch, capNewText;
-    var rELow = /(?:^|\W)c(\w+)(?!\w)/g, lowerMatch;
+    var regexForC = /(\W|^)c(?!om[\W])/gmi, regexMatch;
 
-   // ~*~*~*~*~*~*~*~ This whole loop is essentially what needs to happen: 
-   // ~*~*~*~*~*~*~*~ Where capNewText has the rECap or rELow ecexcuted on it, 
-   // ~*~*~*~*~*~*~*~ but it doesn't run when it get stored as a variable.
-   // ~*~*~*~*~*~*~*~  --it needs to be envoked somehow. I think we
-   // ~*~*~*~*~*~*~*~ just need to create another seperate function 
-   // ~*~*~*~*~*~*~*~ that can take the value and just do it again 
-
-    while (capMatch = rECap.exec(text)){
-        //finds words with capital C 
-        var newCapMatch = capMatch[0];
+    while ((regexMatch = regexForC.exec(text)) !== null) {
+        //finds words with capital C
+        var newRegexMatch = regexMatch[0];
         //takes word without C and adds B emoji
-        var newCapBWord = ' 🅱️️' + capMatch[1];
+        var newCapBWord = ' 🅱️️' + regexMatch[1];
         //replaces each instance
-        var capNewText = text.replace(newCapMatch, newCapBWord);
+        var newText = text.replace(newRegexMatch, newCapBWord);
 
-        // ~*~*~*~*~* where it needs to get the text that was regexed and rerun it
-        var capMatch2 = rECap.exec(capNewText);
-        //finds words with capital C 
-        var newCapMatch2 = capMatch2[0];
-        //takes word without C and adds B emoji
-        var newCapBWord2 = ' 🅱️️' + capMatch2[1];
-        //replaces each instance
-        var capNewText2 = capNewText.replace(newCapMatch, newCapBWord);
+        text = newText;
     }
-        
-    //working loop that scans once    
-    while (lowerMatch = rELow.exec(text)) {
-        //finds words with lowercase C 
-        var newLowerMatch = lowerMatch[0];
-        // takes word without C and adds B emoji
-        var newLowerBWord = ' 🅱️️' + lowerMatch[1];
-        //replaces each instance
-        var lowerNewText = text.replace(newLowerMatch, newLowerBWord);
-        return lowerNewText;
-    } 
-    //returns normal text
     return text;
 }
 
