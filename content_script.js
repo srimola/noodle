@@ -15,12 +15,19 @@ function walk(rootNode) {
 }
 
 function handleText(textNode) {
-    if (!textNode.textContent.match(/\. c/)) {
         textNode.textContent = replaceText(textNode.textContent);
-    }
 }
 
 function replaceText(text) {
+    //if statements for twitter photo and video 'cards'
+    if (text.indexOf('class="')  !== -1 ){
+        return text;
+    }
+    if (text.indexOf('card": {') !== -1 ){
+        return text;
+    }
+    
+    //Regex to get all instances of 'C's and replace with B emoji
     text = text.replace(/(\W|^)c(?!om[\W])/gmi, ' 🅱️');
     return text;
 }
@@ -67,4 +74,3 @@ function walkAndObserve(doc) {
     }
 }
 walkAndObserve(document);
-

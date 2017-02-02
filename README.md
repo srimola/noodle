@@ -1,2 +1,2 @@
 # Bhrome
-Making sure everythings 🅱️️oolin while you 🅱️️rowse with 🅱️️hrome
+Making sure everythings 🅱️️ool while you 🅱️️rowse with 🅱️️hrome
