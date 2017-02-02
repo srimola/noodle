@@ -26,6 +26,11 @@ function replaceText(text) {
     if (text.indexOf('card": {') !== -1 ){
         return text;
     }
+    //extreme hacky fix to bypass google images' rg_meta tag and still work for twitter
+    var i = 140
+    while (i < text.length) {
+        return text;
+    }
     
     //Regex to get all instances of 'C's and replace with B emoji
     text = text.replace(/(\W|^)c(?!om[\W])/gmi, ' 🅱️');

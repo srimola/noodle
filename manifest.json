@@ -2,6 +2,7 @@
   "manifest_version": 2,
 
   "name": "🅱️️hrome",
+  "short_name": "Bhrome",
   "description": "Making sure everythings 🅱️️ool while you 🅱️️rowse with 🅱️️hrome",
   "version": "0.1",
   "browser_action": {
