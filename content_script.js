@@ -10,41 +10,25 @@ function walk(rootNode) {
 
     // Modify each text node's value
     while (node = walker.nextNode()) {
-      // Only handle text nodes
-      if (node.nodeType === 3) {
         handleText(node);
-      }
     }
 }
 
 function handleText(textNode) {
-  if (!textNode.textContent.match(/\.c/)) {
-    textNode.textContent = replaceText(textNode.textContent);
-  }
+    if (!textNode.textContent.match(/\. c/)) {
+        textNode.textContent = replaceText(textNode.textContent);
+    }
 }
 
 function replaceText(text) {
-    //Regex for capital and lowercase letters
-    var regexForC = /(\W|^)c(?!om[\W])/gmi, regexMatch;
-
-    while ((regexMatch = regexForC.exec(text)) !== null) {
-        //finds words with capital C
-        var newRegexMatch = regexMatch[0];
-        //takes word without C and adds B emoji
-        regexMatch[1] = ''
-        var newCapBWord = ' 🅱️' + regexMatch[1];
-        //replaces each instance
-        var newText = text.replace(newRegexMatch, newCapBWord);
-        text = newText;
-    }
+    text = text.replace(/(\W|^)c(?!om[\W])/gmi, ' 🅱️');
     return text;
 }
 
-
 // The callback used for the document body and title observers
 function observerCallback(mutations) {
+   
     var i;
-
     mutations.forEach(function(mutation) {
         for (i = 0; i < mutation.addedNodes.length; i++) {
             if (mutation.addedNodes[i].nodeType === 3) {
@@ -72,9 +56,9 @@ function walkAndObserve(doc) {
     walk(doc.body);
     doc.title = replaceText(doc.title);
 
-    // // Observe the body so that we replace text in any added/modified nodes
-    // bodyObserver = new MutationObserver(observerCallback);
-    // bodyObserver.observe(doc.body, observerConfig);
+    // Observe the body so that we replace text in any added/modified nodes
+    bodyObserver = new MutationObserver(observerCallback);
+    bodyObserver.observe(doc.body, observerConfig);
 
     // Observe the title so we can handle any modifications there
     if (docTitle) {
@@ -83,3 +67,4 @@ function walkAndObserve(doc) {
     }
 }
 walkAndObserve(document);
+
